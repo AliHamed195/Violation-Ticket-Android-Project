@@ -30,6 +30,7 @@ public class LoginTabFragment extends Fragment {
         loginBtnLoginFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Need to complete the validation
                 if(emailLoginFragment.getText().toString().isEmpty()){
                     emailLoginFragment.setError("Requierd filed.");
                     return;
