@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import androidx.appcompat.app.AlertDialog;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.regex.Pattern;
+
 public class LoginTabFragment extends Fragment {
 
+    String messageForEmailValidation, messageForPasswordValidation;
     EditText emailLoginFragment, passwordLoginFragment;
     Button loginBtnLoginFragment;
     TextView forgetPasswordLoginFragment;
@@ -49,10 +53,12 @@ public class LoginTabFragment extends Fragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //validate the email address
                                 EditText email = for_reset_password.findViewById(R.id.resetEmailPopUpForgetPassword);
-                                if(email.getText().toString().isEmpty()){
-                                    email.setError("Requierd filed.");
+                                if(!validateEmailAddress(email)){
+                                    email.setError(messageForEmailValidation);
                                     Toast.makeText(root.getContext(), "No Email Entered!!!!",Toast.LENGTH_LONG).show();
                                     return;
+                                }else{
+                                    email.setError(null);
                                 }
                                 // send the link
                                 Toast.makeText(root.getContext(), "Reset link sent.",Toast.LENGTH_LONG).show();
@@ -68,13 +74,17 @@ public class LoginTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Need to complete the validation
-                if(emailLoginFragment.getText().toString().isEmpty()){
-                    emailLoginFragment.setError("Requierd filed.");
+                if(!validateEmailAddress(emailLoginFragment)){
+                    emailLoginFragment.setError(messageForEmailValidation);
                     return;
+                }else{
+                    emailLoginFragment.setError(null);
                 }
-                if(passwordLoginFragment.getText().toString().isEmpty()){
-                    passwordLoginFragment.setError("Requierd filed.");
+                if(!validatePassword(passwordLoginFragment)){
+                    passwordLoginFragment.setError(messageForPasswordValidation);
                     return;
+                }else{
+                    passwordLoginFragment.setError(null);
                 }
                 startActivity(new Intent(root.getContext(),Dashboard.class));
                 getActivity().finish();
@@ -83,4 +93,34 @@ public class LoginTabFragment extends Fragment {
 
         return root;
     }
+
+    private boolean validateEmailAddress(EditText email){
+        String emailInput = email.getText().toString();
+
+        if(!emailInput.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            return true;
+        }else if(emailInput.isEmpty()){
+            messageForEmailValidation = "Email can not be empty !!!!";
+            return false;
+        }else{
+            messageForEmailValidation = "Invalid Email !!!!";
+            return false;
+        }
+    }
+
+    private boolean validatePassword(EditText pass){
+        String passwordInput = pass.getText().toString();
+        String checkSpaces = "\\A\\w{1,40}\\z";
+
+        if(!passwordInput.isEmpty() && passwordInput.matches(checkSpaces)){
+            return true;
+        }else if(passwordInput.isEmpty()){
+            messageForPasswordValidation = "Password can not be empty !!!!";
+            return false;
+        }else{
+            messageForPasswordValidation = "No white spaces are allowed !!!!";
+            return false;
+        }
+    }
+
 }
