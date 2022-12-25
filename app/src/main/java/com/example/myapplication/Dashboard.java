@@ -24,14 +24,14 @@ public class Dashboard extends AppCompatActivity {
         seeAllViolations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this,CreateViolationStartPage.class));
+                startActivity(new Intent(Dashboard.this,AllViolationsPage.class));
             }
         });
 
         createViolation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this,AllViolationsPage.class));
+                startActivity(new Intent(Dashboard.this,CreateViolationStartPage.class));
             }
         });
 
