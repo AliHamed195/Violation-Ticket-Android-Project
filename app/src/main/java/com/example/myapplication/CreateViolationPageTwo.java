@@ -22,9 +22,8 @@ public class CreateViolationPageTwo extends AppCompatActivity {
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
-//                startActivity(intent);
-                Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
+                startActivity(intent);
             }
         });
     }
