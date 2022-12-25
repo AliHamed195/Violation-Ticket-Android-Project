@@ -25,6 +25,10 @@ public class CreateViolationStartPage extends AppCompatActivity {
         nextFirstPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(e.getText().toString().isEmpty()){
+                    e.setError("Input requierd");
+                    return;
+                }
                 Toast.makeText(CreateViolationStartPage.this,e.getText().toString(),Toast.LENGTH_LONG).show();
             }
         });
