@@ -8,26 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
-
-public class CreateViolationStartPage extends AppCompatActivity {
+public class CreateViolationPageTwo extends AppCompatActivity {
 
     Button nextPage;
-    TextInputEditText e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_violation_start_page);
+        setContentView(R.layout.activity_create_violation_page_two);
 
-        nextPage = findViewById(R.id.nextFirstPageCreateViolation);
-        e = findViewById(R.id.number1);
+        nextPage = findViewById(R.id.nextPageTwoCreateViolation);
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CreateViolationStartPage.this,CreateViolationPageTwo.class);
-                startActivity(intent);
+//                Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
+//                startActivity(intent);
+                Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_LONG).show();
             }
         });
     }
