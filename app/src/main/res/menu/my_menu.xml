@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_facebookmenu"
+            android:icon="@drawable/facebook_img"
+            android:title="Facebook" />
+        <item
+            android:id="@+id/nav_instamenu"
+            android:icon="@drawable/insta_img"
+            android:title="Instagram" />
+        <item
+            android:id="@+id/nav_googlemenu"
+            android:icon="@drawable/google_img"
+            android:title="Website" />
+    </group>
+
+    <item android:title="Options">
+        <menu>
+            <item
+                android:id="@+id/logoutmenu"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
