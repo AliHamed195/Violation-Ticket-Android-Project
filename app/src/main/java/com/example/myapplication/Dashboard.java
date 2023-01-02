@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,10 +9,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class Dashboard extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
 
@@ -49,8 +54,14 @@ public class Dashboard extends AppCompatActivity {
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        // to handel click on the navigation view (menu)
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
+    //to handel open and close menu
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -58,5 +69,26 @@ public class Dashboard extends AppCompatActivity {
         }else{
             super.onBackPressed();
         }
+    }
+
+    // to get the selected item and return true means that there is item selected
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_facebookmenu:
+                Toast.makeText(getApplicationContext(),"FaceBook",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_instamenu:
+                Toast.makeText(getApplicationContext(),"Instagram",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_googlemenu:
+                Toast.makeText(getApplicationContext(),"Google",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_logoutmenu:
+                break;
+        }
+        // to close the menu after select option
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
