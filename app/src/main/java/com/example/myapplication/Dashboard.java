@@ -76,13 +76,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_facebookmenu:
-                Toast.makeText(getApplicationContext(),"FaceBook",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"FaceBook",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_instamenu:
-                Toast.makeText(getApplicationContext(),"Instagram",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Instagram",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_googlemenu:
-                Toast.makeText(getApplicationContext(),"Google",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Google",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logoutmenu:
                 break;
