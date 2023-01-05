@@ -33,6 +33,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         createViolation = findViewById(R.id.createViolationSectionBtn);
 
         // Adding the actions to the buttons.
+        // to handel click on button see all violation
         seeAllViolations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +41,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
+        // to handel click on button create violation
         createViolation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
