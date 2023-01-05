@@ -54,7 +54,7 @@
                     android:layout_below="@id/name1"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="كتابة ظبط"
+                    android:text="تسطير محضر"
                     android:textAlignment="center"
                     android:textSize="34sp"
                     android:textStyle="bold" />

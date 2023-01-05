@@ -73,7 +73,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="16dp"
-                android:text="Next" />
+                android:text="@string/Next" />
 
         </LinearLayout>
 
