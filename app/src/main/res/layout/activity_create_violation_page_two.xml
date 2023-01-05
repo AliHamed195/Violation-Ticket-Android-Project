@@ -1,124 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".CreateViolationPageTwo">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="شاهدنا في محلة الغبيري:"
-        android:textSize="20sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="الشارع"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:lines="3"
-            android:gravity="top"
-            android:overScrollMode="always"
-            android:scrollbars="vertical"
-            android:scrollbarStyle="insideInset"
-            android:scrollHorizontally="false">
+            android:layout_marginTop="10dp"
+            android:text="شاهدنا في محلة الغبيري:"
+            android:textSize="20sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
-        </com.google.android.material.textfield.TextInputEditText>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="الالية"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text">
+            android:hint="الشارع"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:gravity="top"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="insideInset"
+                android:scrollHorizontally="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ماركة"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text">
+            android:hint="الالية"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="لون"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text">
+            android:hint="ماركة"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="رقم"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number">
+            android:hint="لون"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <Button
-        android:id="@+id/nextPageTwoCreateViolation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="رقم"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/nextPageTwoCreateViolation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
