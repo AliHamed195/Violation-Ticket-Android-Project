@@ -3,6 +3,9 @@
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Close menu</string>
     <string name="Next">التالي</string>
+    <string-array name="choseBefore">
+        <item>اختر من القائمة الاولى اولا....</item>
+    </string-array>
     <string-array name="type_Violation">
         <item>فئة أولى</item>
         <item>فئة ثانية</item>
