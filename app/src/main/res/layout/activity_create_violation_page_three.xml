@@ -21,6 +21,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageThreeViolationTypeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
@@ -36,7 +37,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
-            android:id="@+id/violationTypes"
+            android:id="@+id/inputPageThreeViolationTypesSpinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="4dp"
@@ -47,7 +48,7 @@
             android:background="@drawable/spinner_style"
             android:spinnerMode="dropdown"/>
         <Spinner
-            android:id="@+id/violationSubject"
+            android:id="@+id/inputPageThreeViolationSubjectSpinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="4dp"

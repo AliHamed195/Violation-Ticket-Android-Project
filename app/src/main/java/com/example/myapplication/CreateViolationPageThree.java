@@ -10,8 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class CreateViolationPageThree extends AppCompatActivity {
 
+    TextInputEditText violationTypeText;
     Spinner violationTypes , subject;
     Button nextPage;
 
@@ -22,8 +25,9 @@ public class CreateViolationPageThree extends AppCompatActivity {
 
         nextPage = findViewById(R.id.nextPageThreeCreateViolation);
 
-        violationTypes = findViewById(R.id.violationTypes);
-        subject = findViewById(R.id.violationSubject);
+        violationTypeText = findViewById(R.id.inputPageThreeViolationTypeText);
+        violationTypes = findViewById(R.id.inputPageThreeViolationTypesSpinner);
+        subject = findViewById(R.id.inputPageThreeViolationSubjectSpinner);
 
         ArrayAdapter<CharSequence> adapterListOne=ArrayAdapter.createFromResource(this, R.array.type_Violation, android.R.layout.simple_spinner_item);
         adapterListOne.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -62,10 +66,15 @@ public class CreateViolationPageThree extends AppCompatActivity {
             }
         });
 
+        String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(violationTypeText.getText().toString().isEmpty()){
+                    violationTypeText.setError(errorMessageForNullData);
+                    return;
+                }
                 startActivity(new Intent(getApplicationContext(),CreateViolationPageFour.class));
             }
         });

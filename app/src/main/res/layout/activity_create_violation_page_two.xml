@@ -30,6 +30,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageTwoStreet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
@@ -54,6 +55,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageTwoVehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text">
@@ -72,6 +74,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageTwoBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text">
@@ -90,6 +93,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageTwoColors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text">
@@ -108,6 +112,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPageTwoNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number">
