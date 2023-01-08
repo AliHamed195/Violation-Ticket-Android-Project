@@ -23,6 +23,7 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkboxPageFiveForeigner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
@@ -30,6 +31,7 @@
             android:textSize="20sp" />
 
         <CheckBox
+            android:id="@+id/checkboxPageFiveLebanese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
@@ -48,6 +50,7 @@
         android:hint="نوع الجنسية الاجنبية">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPageFiveTypeOfForeignerNationality"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text">
@@ -64,12 +67,14 @@
         android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkboxPageFivePublic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:text="خصوصي"
             android:textSize="20sp" />
         <CheckBox
+            android:id="@+id/checkboxPageFivePrivate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
@@ -88,6 +93,7 @@
         android:hint="رقم">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPageFiveNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number">
