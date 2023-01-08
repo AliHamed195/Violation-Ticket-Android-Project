@@ -61,13 +61,9 @@ public class CreateViolationStartPage extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
+    protected void onResume() {super.onResume();}
 
     @Override
-    protected void onPause() {
-        super.onPause();
-    }
+    protected void onPause() {super.onPause();}
 
 }
