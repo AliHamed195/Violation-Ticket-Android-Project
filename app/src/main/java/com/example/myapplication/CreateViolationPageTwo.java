@@ -29,6 +29,19 @@ public class CreateViolationPageTwo extends AppCompatActivity {
 
         String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
 
+        if (savedInstanceState != null) {
+            if(savedInstanceState.containsKey("inputStreet"))
+                inputStreet.setText(savedInstanceState.getString("inputStreet"));
+            if(savedInstanceState.containsKey("inputVehicle"))
+                inputVehicle.setText(savedInstanceState.getString("inputVehicle"));
+            if(savedInstanceState.containsKey("inputBrand"))
+                inputBrand.setText(savedInstanceState.getString("inputBrand"));
+            if(savedInstanceState.containsKey("inputColor"))
+                inputColor.setText(savedInstanceState.getString("inputColor"));
+            if(savedInstanceState.containsKey("inputNumber"))
+                inputNumber.setText(Integer.toString(savedInstanceState.getInt("inputNumber")));
+        }
+
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,4 +70,30 @@ public class CreateViolationPageTwo extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if(!inputStreet.getText().toString().isEmpty())
+            savedInstanceState.putString("inputStreet", inputStreet.getText().toString());
+        if(!inputVehicle.getText().toString().isEmpty())
+            savedInstanceState.putString("inputVehicle", inputVehicle.getText().toString());
+        if(!inputBrand.getText().toString().isEmpty())
+            savedInstanceState.putString("inputBrand", inputBrand.getText().toString());
+        if(!inputColor.getText().toString().isEmpty())
+            savedInstanceState.putString("inputColor", inputColor.getText().toString());
+        if(!inputNumber.getText().toString().isEmpty())
+            savedInstanceState.putInt("inputNumber", Integer.parseInt(inputNumber.getText().toString()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
 }

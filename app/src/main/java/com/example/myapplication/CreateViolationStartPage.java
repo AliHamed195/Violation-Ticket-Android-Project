@@ -15,6 +15,7 @@ public class CreateViolationStartPage extends AppCompatActivity {
     Button nextPage;
     TextInputEditText numberOne, numberTwo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,13 @@ public class CreateViolationStartPage extends AppCompatActivity {
         numberTwo = findViewById(R.id.number2);
 
         String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
+
+        if (savedInstanceState != null) {
+            if(savedInstanceState.containsKey("numberOne"))
+                numberOne.setText(Integer.toString(savedInstanceState.getInt("numberOne")));
+            if(savedInstanceState.containsKey("numberTwo"))
+                numberTwo.setText(Integer.toString(savedInstanceState.getInt("numberTwo")));
+        }
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +49,25 @@ public class CreateViolationStartPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if(!numberOne.getText().toString().isEmpty())
+            savedInstanceState.putInt("numberOne", Integer.parseInt(numberOne.getText().toString()));
+        if(!numberTwo.getText().toString().isEmpty())
+            savedInstanceState.putInt("numberTwo", Integer.parseInt(numberTwo.getText().toString()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
 }
