@@ -25,7 +25,7 @@ public class CreateViolationStartPage extends AppCompatActivity {
         numberOne = findViewById(R.id.number1);
         numberTwo = findViewById(R.id.number2);
 
-        String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
+        String errorMessageForNullData = "الرجاء ادخال المعلومات اولا.";
 
         if (savedInstanceState != null) {
             if(savedInstanceState.containsKey("numberOne"))

@@ -27,7 +27,7 @@ public class CreateViolationPageTwo extends AppCompatActivity {
         inputColor = findViewById(R.id.inputPageTwoColors);
         inputNumber = findViewById(R.id.inputPageTwoNumber);
 
-        String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
+        String errorMessageForNullData = "الرجاء ادخال المعلومات اولا.";
 
         if (savedInstanceState != null) {
             if(savedInstanceState.containsKey("inputStreet"))

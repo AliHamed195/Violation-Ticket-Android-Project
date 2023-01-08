@@ -23,6 +23,8 @@ public class CreateViolationPageThree extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_violation_page_three);
 
+        String errorMessageForNullData = "الرجاء ادخال المعلومات اولا.";
+
         nextPage = findViewById(R.id.nextPageThreeCreateViolation);
 
         violationTypeText = findViewById(R.id.inputPageThreeViolationTypeText);
@@ -57,6 +59,10 @@ public class CreateViolationPageThree extends AppCompatActivity {
                     newAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.choseBefore, android.R.layout.simple_spinner_item);
                     subject.setAdapter(newAdapter);
                 }
+                if (savedInstanceState != null) {
+                    if(savedInstanceState.containsKey("subject"))
+                        subject.setSelection(savedInstanceState.getInt("subject"));
+                }
             }
 
             @Override
@@ -66,7 +72,15 @@ public class CreateViolationPageThree extends AppCompatActivity {
             }
         });
 
-        String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
+        if (savedInstanceState != null) {
+            if(savedInstanceState.containsKey("violationTypeText"))
+                violationTypeText.setText(savedInstanceState.getString("violationTypeText"));
+            if(savedInstanceState.containsKey("violationTypes"))
+                violationTypes.setSelection(savedInstanceState.getInt("violationTypes"));
+            if(savedInstanceState.containsKey("subject"))
+                subject.setSelection(savedInstanceState.getInt("subject"));
+        }
+
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,4 +93,26 @@ public class CreateViolationPageThree extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if(!violationTypeText.getText().toString().isEmpty())
+            savedInstanceState.putString("violationTypeText", violationTypeText.getText().toString());
+        if(!violationTypes.getSelectedItem().toString().isEmpty())
+            savedInstanceState.putInt("violationTypes", violationTypes.getSelectedItemPosition());
+        if(!subject.getSelectedItem().toString().isEmpty())
+            savedInstanceState.putInt("subject", subject.getSelectedItemPosition());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
 }
