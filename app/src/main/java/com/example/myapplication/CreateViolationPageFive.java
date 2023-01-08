@@ -38,6 +38,13 @@ public class CreateViolationPageFive extends AppCompatActivity {
                     lebanese.setError(errorMessageForNullData);
                     foreigner.setError(errorMessageForNullData);
                     return;
+                }else{
+                    lebanese.setError(null);
+                    foreigner.setError(null);
+                }
+                if(lebanese.isChecked() && !foreignerNationality.getText().toString().isEmpty()){
+                    foreignerNationality.setError("الرجاء اختيار اجنبي قبل الكتابة هنا");
+                    return;
                 }
                 if(foreigner.isChecked() && foreignerNationality.getText().toString().isEmpty()){
                     foreignerNationality.setError(errorMessageForNullData);
@@ -47,6 +54,9 @@ public class CreateViolationPageFive extends AppCompatActivity {
                     publicc.setError(errorMessageForNullData);
                     privatee.setError(errorMessageForNullData);
                     return;
+                }else{
+                    publicc.setError(null);
+                    privatee.setError(null);
                 }
                 if(number.getText().toString().isEmpty()){
                     number.setError(errorMessageForNullData);
