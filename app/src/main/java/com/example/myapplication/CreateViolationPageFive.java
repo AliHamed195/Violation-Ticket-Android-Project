@@ -21,7 +21,7 @@ public class CreateViolationPageFive extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_violation_page_five);
 
-        String errorMessageForNullData = "الرجاء ادخال المعلومات اولاز";
+        String errorMessageForNullData = "الرجاء ادخال المعلومات اولا.";
 
         nextPage = findViewById(R.id.nextPageFiveCreateViolation);
         foreignerNationality = findViewById(R.id.inputPageFiveTypeOfForeignerNationality);
