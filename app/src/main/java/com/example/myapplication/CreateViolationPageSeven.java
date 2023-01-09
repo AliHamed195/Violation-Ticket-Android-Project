@@ -16,7 +16,8 @@ import com.google.android.material.textfield.TextInputLayout;
 public class CreateViolationPageSeven extends AppCompatActivity {
 
     TextView newCostValue;
-    TextInputEditText originalCost, message, structureNo, counterNumber, garageName;
+    TextInputLayout originalCost;
+    TextInputEditText  message, structureNo, counterNumber, garageName;
     CheckBox isWinched;
     Button pageSevenCreateViolation;
 
@@ -27,6 +28,8 @@ public class CreateViolationPageSeven extends AppCompatActivity {
 
         String errorMessageForNullData = "الرجاء ادخال المعلومات اولا.";
 
+        pageSevenCreateViolation = findViewById(R.id.PageSevenCreateViolation);
+
         newCostValue = findViewById(R.id.newviolationCostValuePageSeven);
         originalCost = findViewById(R.id.costPageSeven);
         message = findViewById(R.id.inputPageSevenMessage);
@@ -35,11 +38,11 @@ public class CreateViolationPageSeven extends AppCompatActivity {
         garageName = findViewById(R.id.inputPageSevenGarageName);
         isWinched = findViewById(R.id.checkboxPageSevenIsWinched);
 
-        if(originalCost.getText().toString().isEmpty()){
+        if(originalCost.getEditText().getText().toString().isEmpty()){
             newCostValue.setText("خلال اول خمسة عشر يوما وبقيمة ............ ثاني خمسة عشر يوما.");
         }
 
-        originalCost.addTextChangedListener(new TextWatcher() {
+        originalCost.getEditText().addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
 
@@ -52,10 +55,10 @@ public class CreateViolationPageSeven extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(originalCost.getText().toString().isEmpty()){
+                if(originalCost.getEditText().getText().toString().isEmpty()){
                     newCostValue.setText("خلال اول خمسة عشر يوما وبقيمة ............ ثاني خمسة عشر يوما.");
                 }else{
-                    int v = Integer.parseInt(originalCost.getText().toString());
+                    int v = Integer.parseInt(originalCost.getEditText().getText().toString());
                     v = v * 2;
                     newCostValue.setText("خلال اول خمسة عشر يوما وبقيمة " +v+" ثاني خمسة عشر يوما.");
                 }
@@ -66,25 +69,35 @@ public class CreateViolationPageSeven extends AppCompatActivity {
         pageSevenCreateViolation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(originalCost.getText().toString().isEmpty()){
+                if(originalCost.getEditText().getText().toString().isEmpty()){
                     originalCost.setError(errorMessageForNullData);
                     return;
+                }else{
+                    originalCost.setError(null);
                 }
                 if(message.getText().toString().isEmpty()){
                     message.setError(errorMessageForNullData);
                     return;
+                }else{
+                    message.setError(null);
                 }
                 if(structureNo.getText().toString().isEmpty()){
                     structureNo.setError(errorMessageForNullData);
                     return;
+                }else{
+                    structureNo.setError(null);
                 }
                 if(counterNumber.getText().toString().isEmpty()){
                     counterNumber.setError(errorMessageForNullData);
                     return;
+                }else{
+                    counterNumber.setError(null);
                 }
                 if(garageName.getText().toString().isEmpty()){
                     garageName.setError(errorMessageForNullData);
                     return;
+                }else{
+                    garageName.setError(null);
                 }
             }
         });

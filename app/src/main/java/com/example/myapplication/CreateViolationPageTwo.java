@@ -48,22 +48,32 @@ public class CreateViolationPageTwo extends AppCompatActivity {
                 if(inputStreet.getText().toString().isEmpty()){
                     inputStreet.setError(errorMessageForNullData);
                     return;
+                }else{
+                    inputStreet.setError(null);
                 }
                 if(inputVehicle.getText().toString().isEmpty()){
                     inputVehicle.setError(errorMessageForNullData);
                     return;
+                }else{
+                    inputVehicle.setError(null);
                 }
                 if(inputBrand.getText().toString().isEmpty()){
                     inputBrand.setError(errorMessageForNullData);
                     return;
+                }else{
+                    inputBrand.setError(null);
                 }
                 if(inputColor.getText().toString().isEmpty()){
                     inputColor.setError(errorMessageForNullData);
                     return;
+                }else{
+                    inputColor.setError(null);
                 }
                 if(inputNumber.getText().toString().isEmpty()){
                     inputNumber.setError(errorMessageForNullData);
                     return;
+                }else{
+                    inputNumber.setError(null);
                 }
                 Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
                 startActivity(intent);

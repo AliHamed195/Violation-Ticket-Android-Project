@@ -35,17 +35,25 @@ public class CreateViolationPageSix extends AppCompatActivity {
                     ownTheCar.setError(errorMessageForNullData);
                     notOwnTheCar.setError(errorMessageForNullData);
                     return;
+                }else{
+                    ownTheCar.setError(null);
+                    notOwnTheCar.setError(null);
                 }
                 if(ownTheCar.isChecked() && notOwnTheCar.isChecked()){
                     ownTheCar.setError("الرحاء اختيار خيار واحد فقظ");
                     notOwnTheCar.setError("الرحاء اختيار خيار واحد فقظ");
                     return;
+                }else{
+                    ownTheCar.setError(null);
+                    notOwnTheCar.setError(null);
                 }
                 if(statementOfTheOffender.getText().toString().isEmpty()){
                     statementOfTheOffender.setError(errorMessageForNullData);
                     return;
+                }else{
+                    statementOfTheOffender.setError(null);
                 }
-                startActivity(new Intent(getApplicationContext(),CreateViolationPageSeven.class));
+                startActivity(new Intent(CreateViolationPageSix.this,CreateViolationPageSeven.class));
             }
         });
     }

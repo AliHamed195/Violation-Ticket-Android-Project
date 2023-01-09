@@ -40,10 +40,14 @@ public class CreateViolationStartPage extends AppCompatActivity {
                 if(numberOne.getText().toString().isEmpty()){
                     numberOne.setError(errorMessageForNullData);
                     return;
+                }else{
+                    numberOne.setError(null);
                 }
                 if(numberTwo.getText().toString().isEmpty()){
                     numberTwo.setError(errorMessageForNullData);
                     return;
+                }else{
+                    numberTwo.setError(null);
                 }
                 Intent intent = new Intent(CreateViolationStartPage.this,CreateViolationPageTwo.class);
                 startActivity(intent);

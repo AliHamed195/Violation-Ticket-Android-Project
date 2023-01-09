@@ -88,6 +88,8 @@ public class CreateViolationPageThree extends AppCompatActivity {
                 if(violationTypeText.getText().toString().isEmpty()){
                     violationTypeText.setError(errorMessageForNullData);
                     return;
+                }else{
+                    violationTypeText.setError(null);
                 }
                 startActivity(new Intent(getApplicationContext(),CreateViolationPageFour.class));
             }
