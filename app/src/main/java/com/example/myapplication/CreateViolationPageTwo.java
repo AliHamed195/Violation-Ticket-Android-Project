@@ -12,6 +12,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageTwo extends AppCompatActivity {
 
+    public static final String ALL_DATA = "allData";
+
     TextInputEditText inputStreet, inputVehicle, inputBrand, inputColor, inputNumber;
     Button nextPage;
 
@@ -75,8 +77,13 @@ public class CreateViolationPageTwo extends AppCompatActivity {
                 }else{
                     inputNumber.setError(null);
                 }
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
+                String allData = previousData+","+inputStreet.getText().toString()+","+inputVehicle.getText().toString()+","+inputBrand.getText().toString()+
+                        inputColor.getText().toString()+","+inputNumber.getText().toString();
+                intent.putExtra(CreateViolationPageThree.ALL_DATA, previousData);
                 startActivity(intent);
+
             }
         });
     }

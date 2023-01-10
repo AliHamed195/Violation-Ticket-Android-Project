@@ -14,6 +14,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageThree extends AppCompatActivity {
 
+    public static final String ALL_DATA = "allData";
+
     TextInputEditText violationTypeText;
     Spinner violationTypes , subject;
     Button nextPage;

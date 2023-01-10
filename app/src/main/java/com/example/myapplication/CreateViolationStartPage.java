@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -50,6 +49,8 @@ public class CreateViolationStartPage extends AppCompatActivity {
                     numberTwo.setError(null);
                 }
                 Intent intent = new Intent(CreateViolationStartPage.this,CreateViolationPageTwo.class);
+                String allData = numberOne.getText().toString()+","+numberTwo.getText().toString();
+                intent.putExtra(CreateViolationPageTwo.ALL_DATA, allData);
                 startActivity(intent);
             }
         });
