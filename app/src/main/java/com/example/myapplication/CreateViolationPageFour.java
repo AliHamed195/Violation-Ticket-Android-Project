@@ -11,6 +11,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageFour extends AppCompatActivity {
 
+    public static final String ALL_DATA = "allData";
+
     TextInputEditText nationality, name, fatherName, place, street, dayOfBirth,
             KaidPlace, theFame, motherName, own, phoneNumber, town;
     Button nextPage;
@@ -143,7 +145,14 @@ public class CreateViolationPageFour extends AppCompatActivity {
                     town.setError(null);
                 }
 
-                startActivity(new Intent(getApplicationContext(),CreateViolationPageFive.class));
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
+                Intent intent = new Intent(CreateViolationPageFour.this,CreateViolationPageFive.class);
+                String allData = previousData+","+nationality.getText().toString()+","+name.getText().toString()+","+fatherName.getText().toString()+
+                        ","+place.getText().toString()+","+street.getText().toString()+","+dayOfBirth.getText().toString()+","+KaidPlace.getText().toString()+
+                        ","+theFame.getText().toString()+","+motherName.getText().toString()+","+own.getText().toString()+","+phoneNumber.getText().toString()+
+                        ","+town.getText().toString();
+                intent.putExtra(CreateViolationPageFive.ALL_DATA, allData);
+                startActivity(intent);
             }
         });
     }

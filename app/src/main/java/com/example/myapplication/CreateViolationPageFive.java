@@ -12,6 +12,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageFive extends AppCompatActivity {
 
+    public static final String ALL_DATA = "allData";
+
     TextInputEditText foreignerNationality, number;
     CheckBox foreigner, lebanese, publicc, privatee;
     Button nextPage;
@@ -68,7 +70,22 @@ public class CreateViolationPageFive extends AppCompatActivity {
                 }else{
                     number.setError(null);
                 }
-                startActivity(new Intent(getApplicationContext(),CreateViolationPageSix.class));
+
+                String optionalTextForNationality;
+                if(foreignerNationality.getText().toString().isEmpty()){
+                    optionalTextForNationality = " ";
+                }else{
+                    optionalTextForNationality = foreignerNationality.getText().toString();
+                }
+
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
+                Intent intent = new Intent(CreateViolationPageFive.this,CreateViolationPageSix.class);
+                String allData = previousData+","+foreigner.isChecked()+ ","+lebanese.isChecked()+
+                        ","+optionalTextForNationality+
+                        ","+publicc.isChecked()+","+privatee.isChecked()+","+number.getText().toString();
+                intent.putExtra(CreateViolationPageSix.ALL_DATA, allData);
+                startActivity(intent);
+
             }
         });
     }

@@ -81,7 +81,7 @@ public class CreateViolationPageTwo extends AppCompatActivity {
                 Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
                 String allData = previousData+","+inputStreet.getText().toString()+","+inputVehicle.getText().toString()+","+inputBrand.getText().toString()+
                         inputColor.getText().toString()+","+inputNumber.getText().toString();
-                intent.putExtra(CreateViolationPageThree.ALL_DATA, previousData);
+                intent.putExtra(CreateViolationPageThree.ALL_DATA, allData);
                 startActivity(intent);
 
             }

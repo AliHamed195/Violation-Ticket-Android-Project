@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class CreateViolationPageSeven extends AppCompatActivity {
+
+    public static final String ALL_DATA = "allData";
 
     TextView newCostValue;
     TextInputLayout originalCost;
@@ -99,6 +102,12 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 }else{
                     garageName.setError(null);
                 }
+
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
+
+                // Do not forget to add the inputs of this page
+
+
             }
         });
 

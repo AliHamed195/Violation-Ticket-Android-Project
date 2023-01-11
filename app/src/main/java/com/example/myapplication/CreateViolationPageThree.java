@@ -93,7 +93,11 @@ public class CreateViolationPageThree extends AppCompatActivity {
                 }else{
                     violationTypeText.setError(null);
                 }
-                startActivity(new Intent(getApplicationContext(),CreateViolationPageFour.class));
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
+                Intent intent = new Intent(CreateViolationPageThree.this,CreateViolationPageFour.class);
+                String allData = previousData+","+violationTypeText.getText().toString()+","+violationTypes.getSelectedItem()+","+subject.getSelectedItem();
+                intent.putExtra(CreateViolationPageFour.ALL_DATA, allData);
+                startActivity(intent);
             }
         });
     }

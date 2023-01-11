@@ -12,6 +12,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageSix extends AppCompatActivity {
 
+    public static final String ALL_DATA = "allData";
+
     TextInputEditText statementOfTheOffender;
     CheckBox ownTheCar, notOwnTheCar;
     Button nextBtn;
@@ -53,7 +55,13 @@ public class CreateViolationPageSix extends AppCompatActivity {
                 }else{
                     statementOfTheOffender.setError(null);
                 }
-                startActivity(new Intent(CreateViolationPageSix.this,CreateViolationPageSeven.class));
+
+                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
+                Intent intent = new Intent(CreateViolationPageSix.this,CreateViolationPageSeven.class);
+                String allData = previousData+","+statementOfTheOffender.getText().toString()+","+ownTheCar.isChecked()+
+                        ","+notOwnTheCar.isChecked();
+                intent.putExtra(CreateViolationPageSeven.ALL_DATA, allData);
+                startActivity(intent);
             }
         });
     }
