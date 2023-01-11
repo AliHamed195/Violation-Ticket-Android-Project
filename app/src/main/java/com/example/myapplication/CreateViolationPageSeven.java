@@ -106,10 +106,9 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
 
                 // Do not forget to add the inputs of this page
-
+                Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
 
             }
         });
-
     }
 }
