@@ -48,9 +48,11 @@ public class CreateViolationStartPage extends AppCompatActivity {
                 }else{
                     numberTwo.setError(null);
                 }
+                String[] data = {"data1", "data2", "data3"};
                 Intent intent = new Intent(CreateViolationStartPage.this,CreateViolationPageTwo.class);
                 String allData = numberOne.getText().toString()+","+numberTwo.getText().toString();
                 intent.putExtra(CreateViolationPageTwo.ALL_DATA, allData);
+                intent.putExtra("data", data);
                 startActivity(intent);
             }
         });

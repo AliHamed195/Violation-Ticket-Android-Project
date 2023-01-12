@@ -77,6 +77,8 @@ public class CreateViolationPageTwo extends AppCompatActivity {
                 }else{
                     inputNumber.setError(null);
                 }
+                String[] data = getIntent().getStringArrayExtra("data");
+                Toast.makeText(getApplicationContext(),data[0],Toast.LENGTH_LONG).show();
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
                 String allData = previousData+","+inputStreet.getText().toString()+","+inputVehicle.getText().toString()+","+inputBrand.getText().toString()+

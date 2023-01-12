@@ -11,8 +11,16 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.forApi.MyApi;
+import com.example.myapplication.forApi.MyData;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CreateViolationPageSeven extends AppCompatActivity {
 
@@ -107,6 +115,29 @@ public class CreateViolationPageSeven extends AppCompatActivity {
 
                 // Do not forget to add the inputs of this page
                 Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
+
+                // to send the data using API
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://your-api-base-url.com")
+                        .build();
+                MyApi api = retrofit.create(MyApi.class);
+                MyData data = new MyData("some data");
+                Call<ResponseBody> call = api.saveData(data);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+
+                        } else {
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    }
+                });
 
             }
         });
