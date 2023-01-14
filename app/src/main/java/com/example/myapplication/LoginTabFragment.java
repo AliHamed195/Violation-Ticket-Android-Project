@@ -116,7 +116,7 @@ public class LoginTabFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 

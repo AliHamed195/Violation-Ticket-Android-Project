@@ -20,7 +20,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     private DrawerLayout drawerLayout;
 
-    Button seeAllViolations, createViolation;
+    Button seeAllViolations, createViolation, unSendedViolations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.drawer_layout);
         seeAllViolations = findViewById(R.id.seeAllViolationsSectionBtn);
         createViolation = findViewById(R.id.createViolationSectionBtn);
+        unSendedViolations = findViewById(R.id.seeUnSendedViolationsSectionBtn);
 
         // Adding the actions to the buttons.
         // to handel click on button see all violation
@@ -46,6 +47,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this,CreateViolationStartPage.class));
+            }
+        });
+
+        unSendedViolations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this,UnSendedViolationsPage.class));
             }
         });
 

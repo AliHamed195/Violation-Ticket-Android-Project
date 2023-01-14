@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.forApi.MyData;
 import com.example.myapplication.forApi.SendDataApi;
+import com.example.myapplication.forSqlite.DatabaseHelper;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -114,9 +115,18 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
 
                 // Do not forget to add the inputs of this page
-                Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
 
+                DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+                long id = dbHelper.insertRecord(previousData);
+                // check if the insert is success or not
+                if(id != -1) {
+                    Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error saving record", Toast.LENGTH_SHORT).show();
+                }
 
+                /*
                 // to send the data using API
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("https://your-api-base-url.com")
@@ -139,7 +149,7 @@ public class CreateViolationPageSeven extends AppCompatActivity {
 
                     }
                 });
-
+                */
             }
         });
     }
