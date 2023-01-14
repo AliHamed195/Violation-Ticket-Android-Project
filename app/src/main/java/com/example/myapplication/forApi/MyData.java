@@ -3,18 +3,20 @@ package com.example.myapplication.forApi;
 import com.google.gson.annotations.SerializedName;
 
 public class MyData {
-    @SerializedName("name")
-    private String name;
+    @SerializedName("numberOne")
+    private int numberOne;
 
-    public MyData(String name) {
-        this.name = name;
+    private int numberTwo;
+    private String inputStreet;
+    private String inputVehicle;
+    private String inputBrand;
+    private String inputColor;
+    private int inputNumber;
+    //TextInputEditText violationTypeText;
+    //    Spinner violationTypes , subject;
+
+    public MyData(int numberOne) {
+        this.numberOne = numberOne;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

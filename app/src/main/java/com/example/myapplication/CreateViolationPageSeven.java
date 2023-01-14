@@ -11,8 +11,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.forApi.MyApi;
 import com.example.myapplication.forApi.MyData;
+import com.example.myapplication.forApi.SendDataApi;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -116,12 +116,13 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 // Do not forget to add the inputs of this page
                 Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
 
+
                 // to send the data using API
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("https://your-api-base-url.com")
                         .build();
-                MyApi api = retrofit.create(MyApi.class);
-                MyData data = new MyData("some data");
+                SendDataApi api = retrofit.create(SendDataApi.class);
+                MyData data = new MyData(1);
                 Call<ResponseBody> call = api.saveData(data);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override

@@ -73,4 +73,12 @@ public class CreateViolationStartPage extends AppCompatActivity {
     @Override
     protected void onPause() {super.onPause();}
 
+    /*
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        input1 = savedInstanceState.getString("input1");
+        input2 = savedInstanceState.getString("input2");
+    }
+    */
 }

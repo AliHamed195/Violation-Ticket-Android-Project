@@ -16,7 +16,15 @@ import androidx.appcompat.app.AlertDialog;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.regex.Pattern;
+import com.example.myapplication.forApi.LoginClass;
+import com.example.myapplication.forApi.LoginApi;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginTabFragment extends Fragment {
 
@@ -86,8 +94,35 @@ public class LoginTabFragment extends Fragment {
                 }else{
                     passwordLoginFragment.setError(null);
                 }
+
+                // to send the data using API
+                Retrofit retrofit = new Retrofit.Builder()
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .baseUrl("https://192.168.0.111:5000")
+                        .build();
+                LoginApi api = retrofit.create(LoginApi.class);
+                LoginClass data = new LoginClass(emailLoginFragment.getText().toString(), passwordLoginFragment.getText().toString());
+                Call<ResponseBody> call = api.saveData(data);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            // the intint should be here
+                            Toast.makeText(getContext(),"done", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(),"error", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 startActivity(new Intent(root.getContext(),Dashboard.class));
                 getActivity().finish();
+
             }
         });
 
