@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageThree extends AppCompatActivity {
@@ -93,6 +94,12 @@ public class CreateViolationPageThree extends AppCompatActivity {
                 }else{
                     violationTypeText.setError(null);
                 }
+
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setViolationTypeText(violationTypeText.getText().toString());
+                allViolationData.setViolationTypes(violationTypes.getSelectedItem().toString());
+                allViolationData.setSubject(subject.getSelectedItem().toString());
+
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageThree.this,CreateViolationPageFour.class);
                 String allData = previousData+","+violationTypeText.getText().toString()+","+violationTypes.getSelectedItem()+","+subject.getSelectedItem();

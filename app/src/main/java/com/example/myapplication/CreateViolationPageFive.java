@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageFive extends AppCompatActivity {
@@ -77,6 +78,14 @@ public class CreateViolationPageFive extends AppCompatActivity {
                 }else{
                     optionalTextForNationality = foreignerNationality.getText().toString();
                 }
+
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setForeignerNationality(foreignerNationality.getText().toString());
+                allViolationData.setNumber(number.getText().toString());
+                allViolationData.setForeigner(foreigner.isChecked());
+                allViolationData.setLebanese(lebanese.isChecked());
+                allViolationData.setPublicc(publicc.isChecked());
+                allViolationData.setPrivatee(privatee.isChecked());
 
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageFive.this,CreateViolationPageSix.class);

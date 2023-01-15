@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.example.myapplication.forApi.MyData;
 import com.example.myapplication.forApi.SendDataApi;
 import com.example.myapplication.forSqlite.DatabaseHelper;
@@ -112,18 +113,81 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                     garageName.setError(null);
                 }
 
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setOriginalCost(originalCost.getEditText().getText().toString());
+                allViolationData.setNewCostValue(Integer.toString(
+                        Integer.parseInt(originalCost.getEditText().getText().toString())*2)
+                );
+                allViolationData.setMessage(message.getText().toString());
+                allViolationData.setStructureNo(structureNo.getText().toString());
+                allViolationData.setCounterNumber(counterNumber.getText().toString());
+                allViolationData.setGarageName(garageName.getText().toString());
+
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
 
                 // Do not forget to add the inputs of this page
                 //Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
 
-                DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-                long id = dbHelper.insertRecord(previousData);
-                // check if the insert is success or not
-                if(id != -1) {
-                    Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Error saving record", Toast.LENGTH_SHORT).show();
+                // covert boolean to int
+                int isLebanese = allViolationData.isLebanese() ? 1 : 0;
+                int isForeigner = allViolationData.isForeigner() ? 1 : 0;
+                int isPublicc = allViolationData.isPublicc() ? 1 : 0;
+                int isPrivatee = allViolationData.isPrivatee() ? 1 : 0;
+                int isOwnTheCar = allViolationData.isOwnTheCar() ? 1 : 0;
+                int isNotOwnTheCar = allViolationData.isNotOwnTheCar() ? 1 : 0;
+                int isWinched = allViolationData.isWinched() ? 1 : 0;
+
+
+                try {
+                    DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+                    long id = dbHelper.insertRecord(
+                            allViolationData.getNumberOne(),
+                            allViolationData.getNumberTwo(),
+                            allViolationData.getInputStreet(),
+                            allViolationData.getInputVehicle(),
+                            allViolationData.getInputBrand(),
+                            allViolationData.getInputColor(),
+                            allViolationData.getInputNumber(),
+                            allViolationData.getViolationTypeText(),
+                            allViolationData.getViolationTypes(),
+                            allViolationData.getSubject(),
+                            allViolationData.getNationality(),
+                            allViolationData.getName(),
+                            allViolationData.getFatherName(),
+                            allViolationData.getPlace(),
+                            allViolationData.getStreet(),
+                            allViolationData.getDayOfBirth(),
+                            allViolationData.getKaidPlace(),
+                            allViolationData.getTheFame(),
+                            allViolationData.getMotherName(),
+                            allViolationData.getOwn(),
+                            allViolationData.getPhoneNumber(),
+                            allViolationData.getTown(),
+                            isLebanese,
+                            isForeigner,
+                            allViolationData.getForeignerNationality(),
+                            isPublicc,
+                            isPrivatee,
+                            allViolationData.getNumber(),
+                            isOwnTheCar,
+                            isNotOwnTheCar,
+                            allViolationData.getStatementOfTheOffender(),
+                            isWinched,
+                            allViolationData.getNewCostValue(),
+                            allViolationData.getOriginalCost(),
+                            allViolationData.getMessage(),
+                            allViolationData.getStructureNo(),
+                            allViolationData.getCounterNumber(),
+                            allViolationData.getGarageName()
+                    );
+                    // check if the insert is success or not
+                    if (id != -1) {
+                        Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error saving record", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                 }
 
                 /*

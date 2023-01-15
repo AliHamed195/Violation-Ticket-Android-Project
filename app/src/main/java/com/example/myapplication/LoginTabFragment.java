@@ -98,7 +98,7 @@ public class LoginTabFragment extends Fragment {
                 // to send the data using API
                 Retrofit retrofit = new Retrofit.Builder()
                         .addConverterFactory(GsonConverterFactory.create())
-                        .baseUrl("https://192.168.0.111:5000")
+                        .baseUrl("http://10.0.2.2:5000")
                         .build();
                 LoginApi api = retrofit.create(LoginApi.class);
                 LoginClass data = new LoginClass(emailLoginFragment.getText().toString(), passwordLoginFragment.getText().toString());
@@ -109,19 +109,22 @@ public class LoginTabFragment extends Fragment {
                         if (response.isSuccessful()) {
                             // the intint should be here
                             Toast.makeText(getContext(),"done", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(root.getContext(),Dashboard.class));
+                            getActivity().finish();
                         } else {
-                            Toast.makeText(getContext(),"error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(),response.toString(), Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        //Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
                 startActivity(new Intent(root.getContext(),Dashboard.class));
                 getActivity().finish();
+
 
             }
         });

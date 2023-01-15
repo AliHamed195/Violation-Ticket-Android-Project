@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageFour extends AppCompatActivity {
@@ -144,6 +145,20 @@ public class CreateViolationPageFour extends AppCompatActivity {
                 }else{
                     town.setError(null);
                 }
+
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setNationality(nationality.getText().toString());
+                allViolationData.setName(name.getText().toString());
+                allViolationData.setFatherName(fatherName.getText().toString());
+                allViolationData.setPlace(place.getText().toString());
+                allViolationData.setStreet(street.getText().toString());
+                allViolationData.setDayOfBirth(dayOfBirth.getText().toString());
+                allViolationData.setKaidPlace(KaidPlace.getText().toString());
+                allViolationData.setTheFame(theFame.getText().toString());
+                allViolationData.setMotherName(motherName.getText().toString());
+                allViolationData.setOwn(own.getText().toString());
+                allViolationData.setPhoneNumber(phoneNumber.getText().toString());
+                allViolationData.setTown(town.getText().toString());
 
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageFour.this,CreateViolationPageFive.class);

@@ -7,7 +7,7 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="16dp"
     app:strokeWidth="1dp"
-    app:strokeColor="#000">
+    app:strokeColor="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,17 @@
             android:layout_marginBottom="5dp"/>
 
         <TextView
-            android:id="@+id/body"
+            android:id="@+id/body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Body text"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Body text"

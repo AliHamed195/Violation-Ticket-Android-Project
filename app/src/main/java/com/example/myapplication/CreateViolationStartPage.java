@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationStartPage extends AppCompatActivity {
@@ -48,11 +49,12 @@ public class CreateViolationStartPage extends AppCompatActivity {
                 }else{
                     numberTwo.setError(null);
                 }
-                String[] data = {"data1", "data2", "data3"};
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setNumberOne(numberOne.getText().toString());
+                allViolationData.setNumberTwo(numberTwo.getText().toString());
                 Intent intent = new Intent(CreateViolationStartPage.this,CreateViolationPageTwo.class);
                 String allData = numberOne.getText().toString()+","+numberTwo.getText().toString();
                 intent.putExtra(CreateViolationPageTwo.ALL_DATA, allData);
-                intent.putExtra("data", data);
                 startActivity(intent);
             }
         });

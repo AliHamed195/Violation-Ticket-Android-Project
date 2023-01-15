@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageTwo extends AppCompatActivity {
@@ -77,8 +78,14 @@ public class CreateViolationPageTwo extends AppCompatActivity {
                 }else{
                     inputNumber.setError(null);
                 }
-                String[] data = getIntent().getStringArrayExtra("data");
-                Toast.makeText(getApplicationContext(),data[0],Toast.LENGTH_LONG).show();
+
+                AllViolationData allViolationData = AllViolationData.getViolationData();
+                allViolationData.setInputStreet(inputStreet.getText().toString());
+                allViolationData.setInputVehicle(inputVehicle.getText().toString());
+                allViolationData.setInputBrand(inputBrand.getText().toString());
+                allViolationData.setInputColor(inputColor.getText().toString());
+                allViolationData.setNumber(inputNumber.getText().toString());
+
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
                 Intent intent = new Intent(CreateViolationPageTwo.this,CreateViolationPageThree.class);
                 String allData = previousData+","+inputStreet.getText().toString()+","+inputVehicle.getText().toString()+","+inputBrand.getText().toString()+
