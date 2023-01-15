@@ -1,6 +1,8 @@
 package com.example.myapplication.TictViolationData;
 
-public class AllViolationData {
+import java.io.Serializable;
+
+public class AllViolationData implements Serializable {
     private static AllViolationData violationData;
     private String numberOne;
     private String numberTwo;
@@ -42,6 +44,10 @@ public class AllViolationData {
     private String garageName;
 
     public AllViolationData() {}
+
+    public static void setViolationData(AllViolationData violationData) {
+        AllViolationData.violationData = violationData;
+    }
 
     public static AllViolationData getViolationData() {
         if(violationData==null){

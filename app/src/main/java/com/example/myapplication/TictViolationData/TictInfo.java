@@ -4,12 +4,22 @@ public class TictInfo {
     private int tictId;
     private String body1;
     private String body2;
+    private AllViolationData allViolationData;
 
 
-    public TictInfo(int tictId, String body1, String body2) {
+    public TictInfo(int tictId, String body1, String body2,AllViolationData allViolationData) {
         this.tictId = tictId;
         this.body1 = body1;
         this.body2 = body2;
+        this.allViolationData = allViolationData;
+    }
+
+    public AllViolationData getAllViolationData() {
+        return allViolationData;
+    }
+
+    public void setAllViolationData(AllViolationData allViolationData) {
+        this.allViolationData = allViolationData;
     }
 
     public int getTictId() {

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -122,6 +123,7 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 allViolationData.setStructureNo(structureNo.getText().toString());
                 allViolationData.setCounterNumber(counterNumber.getText().toString());
                 allViolationData.setGarageName(garageName.getText().toString());
+                allViolationData.setWinched(isWinched.isChecked());
 
                 String previousData = (String) getIntent().getExtras().get(ALL_DATA);
 
@@ -182,9 +184,13 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                     );
                     // check if the insert is success or not
                     if (id != -1) {
-                        Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_SHORT).show();
+                        AllViolationData.setViolationData(null);
+                        Intent intent = new Intent(getApplicationContext(),Dashboard.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Record saved successfully", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Error saving record", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error saving record", Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();

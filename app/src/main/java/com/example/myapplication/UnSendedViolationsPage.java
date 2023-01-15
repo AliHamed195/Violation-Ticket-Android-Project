@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Layout;
@@ -18,9 +19,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.TictViolationData.AllViolationData;
 import com.example.myapplication.TictViolationData.TictInfo;
 import com.example.myapplication.forSqlite.DatabaseHelper;
+import com.google.gson.JsonObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class UnSendedViolationsPage extends AppCompatActivity {
@@ -28,8 +32,44 @@ public class UnSendedViolationsPage extends AppCompatActivity {
     LayoutInflater inflater;
     ListView notesListViewOutPut;
     String COLUMN_ID = "id";
+    String COLUMN_numberOne = "numberOne";
+    String COLUMN_numberTwo = "numberTwo";
+    String COLUMN_inputStreet = "inputStreet";
+    String COLUMN_inputVehicle = "inputVehicle";
+    String COLUMN_inputBrand = "inputBrand";
+    String COLUMN_inputColor = "inputColor";
+    String COLUMN_inputNumber = "inputNumber";
+    String COLUMN_violationTypeText = "violationTypeText";
     String COLUMN_violationTypes = "violationTypes";
     String COLUMN_subject = "subject";
+    String COLUMN_nationality = "nationality";
+    String COLUMN_name = "name";
+    String COLUMN_fatherName = "fatherName";
+    String COLUMN_place = "place";
+    String COLUMN_street = "street";
+    String COLUMN_dayOfBirth = "dayOfBirth";
+    String COLUMN_KaidPlace = "KaidPlace";
+    String COLUMN_theFame = "theFame";
+    String COLUMN_motherName = "motherName";
+    String COLUMN_own = "own";
+    String COLUMN_phoneNumber = "phoneNumber";
+    String COLUMN_town = "town";
+    String COLUMN_lebanese = "lebanese";
+    String COLUMN_foreigner = "foreigner";
+    String COLUMN_foreignerNationality = "foreignerNationality";
+    String COLUMN_publicc = "publicc";
+    String COLUMN_privatee = "privatee";
+    String COLUMN_number = "number";
+    String COLUMN_ownTheCar = "ownTheCar";
+    String COLUMN_notOwnTheCar = "notOwnTheCar";
+    String COLUMN_statementOfTheOffender = "statementOfTheOffender";
+    String COLUMN_isWinched = "isWinched";
+    String COLUMN_newCostValue = "newCostValue";
+    String COLUMN_originalCost = "originalCost";
+    String COLUMN_message = "message";
+    String COLUMN_structureNo = "structureNo";
+    String COLUMN_counterNumber = "counterNumber";
+    String COLUMN_garageName = "garageName";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,10 +135,50 @@ public class UnSendedViolationsPage extends AppCompatActivity {
         if (cursor != null && cursor.getCount() > 0) {
             //iterate over cursor
             while (cursor.moveToNext()) {
+                AllViolationData allViolationData = new AllViolationData();
+                allViolationData.setNumberOne(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_numberOne)));
+                allViolationData.setNumberTwo(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_numberTwo)));
+                allViolationData.setInputStreet(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_inputStreet)));
+                allViolationData.setInputVehicle(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_inputVehicle)));
+                allViolationData.setInputBrand(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_inputBrand)));
+                allViolationData.setInputColor(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_inputColor)));
+                allViolationData.setNumber(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_inputNumber)));
+                allViolationData.setViolationTypeText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_violationTypeText)));
+                allViolationData.setViolationTypes(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_violationTypes)));
+                allViolationData.setSubject(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_subject)));
+                allViolationData.setNationality(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_nationality)));
+                allViolationData.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_name)));
+                allViolationData.setFatherName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_fatherName)));
+                allViolationData.setPlace(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_place)));
+                allViolationData.setStreet(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_street)));
+                allViolationData.setDayOfBirth(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_dayOfBirth)));
+                allViolationData.setKaidPlace(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KaidPlace)));
+                allViolationData.setTheFame(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_theFame)));
+                allViolationData.setMotherName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_motherName)));
+                allViolationData.setOwn(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_own)));
+                allViolationData.setPhoneNumber(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_phoneNumber)));
+                allViolationData.setTown(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_town)));
+                allViolationData.setForeignerNationality(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_foreignerNationality)));
+                allViolationData.setNumber(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_number)));
+                allViolationData.setForeigner(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_foreigner))));
+                allViolationData.setLebanese(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_lebanese))));
+                allViolationData.setPublicc(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_publicc))));
+                allViolationData.setPrivatee(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_privatee))));
+                allViolationData.setStatementOfTheOffender(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_statementOfTheOffender)));
+                allViolationData.setOwnTheCar(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ownTheCar))));
+                allViolationData.setNotOwnTheCar(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_notOwnTheCar))));
+                allViolationData.setWinched(Boolean.parseBoolean(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_isWinched))));
+                allViolationData.setOriginalCost(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_originalCost)));
+                allViolationData.setNewCostValue(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_newCostValue)));
+                allViolationData.setMessage(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_message)));
+                allViolationData.setStructureNo(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_structureNo)));
+                allViolationData.setCounterNumber(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_counterNumber)));
+                allViolationData.setGarageName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_garageName)));
                 noteClassArrayList.add(new TictInfo(
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_violationTypes)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_subject))
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_subject)),
+                        allViolationData
                 ));
             }
         }
@@ -143,7 +223,10 @@ public class UnSendedViolationsPage extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),title.getText().toString(),Toast.LENGTH_LONG).show();
+                    AllViolationData allViolationData = noteClass.getAllViolationData();
+;                   Intent intent = new Intent(getApplicationContext(),ViolationInfo.class);
+                    intent.putExtra("allViolationData", allViolationData);
+                    startActivity(intent);
                 }
             });
             return myView;
