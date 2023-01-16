@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
+            android:divider="@drawable/table_info_style"
             android:id="@+id/table_violation_info">
 
         </TableLayout>
