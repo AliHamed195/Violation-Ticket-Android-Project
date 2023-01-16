@@ -80,6 +80,7 @@ public class CreateViolationPageTwo extends AppCompatActivity {
 
                 AllViolationData allViolationData = AllViolationData.getViolationData();
                 allViolationData.setInputStreet(inputStreet.getText().toString());
+                allViolationData.setInputNumber(inputNumber.getText().toString());
                 allViolationData.setInputVehicle(inputVehicle.getText().toString());
                 allViolationData.setInputBrand(inputBrand.getText().toString());
                 allViolationData.setInputColor(inputColor.getText().toString());
