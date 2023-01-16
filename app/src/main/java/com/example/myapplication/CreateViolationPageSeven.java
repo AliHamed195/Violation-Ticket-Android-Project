@@ -27,8 +27,6 @@ import retrofit2.Retrofit;
 
 public class CreateViolationPageSeven extends AppCompatActivity {
 
-    public static final String ALL_DATA = "allData";
-
     TextView newCostValue;
     TextInputLayout originalCost;
     TextInputEditText  message, structureNo, counterNumber, garageName;
@@ -125,10 +123,7 @@ public class CreateViolationPageSeven extends AppCompatActivity {
                 allViolationData.setGarageName(garageName.getText().toString());
                 allViolationData.setWinched(isWinched.isChecked());
 
-                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
 
-                // Do not forget to add the inputs of this page
-                //Toast.makeText(getApplicationContext(),previousData,Toast.LENGTH_LONG).show();
 
                 // covert boolean to int
                 int isLebanese = allViolationData.isLebanese() ? 1 : 0;

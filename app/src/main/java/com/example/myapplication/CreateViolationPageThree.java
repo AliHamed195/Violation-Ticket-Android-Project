@@ -15,8 +15,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CreateViolationPageThree extends AppCompatActivity {
 
-    public static final String ALL_DATA = "allData";
-
     TextInputEditText violationTypeText;
     Spinner violationTypes , subject;
     Button nextPage;
@@ -100,11 +98,7 @@ public class CreateViolationPageThree extends AppCompatActivity {
                 allViolationData.setViolationTypes(violationTypes.getSelectedItem().toString());
                 allViolationData.setSubject(subject.getSelectedItem().toString());
 
-                String previousData = (String) getIntent().getExtras().get(ALL_DATA);
-                Intent intent = new Intent(CreateViolationPageThree.this,CreateViolationPageFour.class);
-                String allData = previousData+","+violationTypeText.getText().toString()+","+violationTypes.getSelectedItem()+","+subject.getSelectedItem();
-                intent.putExtra(CreateViolationPageFour.ALL_DATA, allData);
-                startActivity(intent);
+                startActivity(new Intent(CreateViolationPageThree.this,CreateViolationPageFour.class));
             }
         });
     }
