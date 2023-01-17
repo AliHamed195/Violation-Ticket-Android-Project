@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.forApi.LoginClass;
 import com.example.myapplication.forApi.LoginApi;
+import com.example.myapplication.forApi.LoginRequest;
+import com.example.myapplication.forApi.LoginService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -25,8 +37,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 public class LoginTabFragment extends Fragment {
+
 
     String messageForEmailValidation, messageForPasswordValidation;
     EditText emailLoginFragment, passwordLoginFragment;
@@ -95,10 +110,13 @@ public class LoginTabFragment extends Fragment {
                     passwordLoginFragment.setError(null);
                 }
 
+
+/*
+
                 // to send the data using API
                 Retrofit retrofit = new Retrofit.Builder()
                         .addConverterFactory(GsonConverterFactory.create())
-                        .baseUrl("http://10.0.2.2:5000")
+                        .baseUrl("https://10.0.2.5:5000/")
                         .build();
                 LoginApi api = retrofit.create(LoginApi.class);
                 LoginClass data = new LoginClass(emailLoginFragment.getText().toString(), passwordLoginFragment.getText().toString());
@@ -121,9 +139,57 @@ public class LoginTabFragment extends Fragment {
                         //Toast.makeText(getContext(),t.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
+*/
 
-                startActivity(new Intent(root.getContext(),Dashboard.class));
-                getActivity().finish();
+// Define the LoginRequest class
+
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://192.168.0.111:8080/pro/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                // Create a request body object
+                LoginRequest request = new LoginRequest(emailLoginFragment.getText().toString(), passwordLoginFragment.getText().toString());
+
+                // Create the service and make the request
+                LoginService service = retrofit.create(LoginService.class);
+                Call<ResponseBody> call = service.login(request);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            try {
+                                String responseString = response.body().string();
+                                if (responseString.equalsIgnoreCase("Invalid login.")) {
+                                    // Login failed
+                                    Toast.makeText(getContext(), "Invalid login", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Login successful
+                                    Toast.makeText(getContext(), responseString.toString(), Toast.LENGTH_SHORT).show();
+//                                    startActivity(new Intent(root.getContext(),Dashboard.class));
+//                                    getActivity().finish();
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getContext(), "Error: " + response.message(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        // Handle the failure here
+                        Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+//                startActivity(new Intent(root.getContext(),Dashboard.class));
+//                getActivity().finish();
+
 
 
             }
@@ -160,5 +226,41 @@ public class LoginTabFragment extends Fragment {
             return false;
         }
     }
+
+    private class LoginTask extends AsyncTask<Void, Void, Integer> {
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            int statusCode = 0;
+            try {
+                URL url = new URL("http://localhost:5000/api/Auth/login");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                conn.setRequestProperty("Accept", "application/json");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                JSONObject jsonParam = new JSONObject();
+                jsonParam.put("userName", emailLoginFragment.getText().toString());
+                jsonParam.put("password", passwordLoginFragment.getText().toString());
+                // get the status code
+                statusCode = conn.getResponseCode();
+                return statusCode;
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return statusCode;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Integer statusCode) {
+            if (statusCode == HttpURLConnection.HTTP_OK) {
+                // The request was successful
+            } else {
+                // The request was not successful
+            }
+        }
+    }
+
 
 }

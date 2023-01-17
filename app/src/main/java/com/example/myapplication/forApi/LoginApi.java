@@ -8,6 +8,6 @@ import retrofit2.http.POST;
 
 public interface LoginApi {
     @Headers("Content-Type: application/json")
-    @POST("/api/Auth/login/")
+    @POST("api/Auth/login")
     Call<ResponseBody> saveData(@Body LoginClass data);
 }
