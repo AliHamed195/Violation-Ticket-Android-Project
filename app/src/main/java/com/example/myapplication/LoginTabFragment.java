@@ -161,14 +161,15 @@ public class LoginTabFragment extends Fragment {
                         if (response.isSuccessful()) {
                             try {
                                 String responseString = response.body().string();
-                                if (responseString.equalsIgnoreCase("Invalid login.")) {
-                                    // Login failed
-                                    Toast.makeText(getContext(), "Invalid login", Toast.LENGTH_SHORT).show();
-                                } else {
+                                if(responseString.equalsIgnoreCase("done")){
                                     // Login successful
                                     Toast.makeText(getContext(), responseString.toString(), Toast.LENGTH_SHORT).show();
-//                                    startActivity(new Intent(root.getContext(),Dashboard.class));
-//                                    getActivity().finish();
+                                    startActivity(new Intent(root.getContext(),Dashboard.class));
+                                    getActivity().finish();
+                                }else  {
+                                    // Login failed
+                                    Toast.makeText(getContext(), responseString.toString(), Toast.LENGTH_SHORT).show();
+
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();

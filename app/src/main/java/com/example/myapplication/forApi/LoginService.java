@@ -6,6 +6,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface LoginService {
-    @POST("login.html")
+    @POST("connection.php")
     Call<ResponseBody> login(@Body LoginRequest request);
 }
