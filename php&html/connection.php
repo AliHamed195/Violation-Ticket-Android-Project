@@ -8,13 +8,15 @@ $dbname = "tit";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+$data = json_decode(file_get_contents('php://input'), true);
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if (isset($_POST['email']) && isset($_POST['password'])) {
-$username = $_POST['email'];
-$password = $_POST['password'];
+if ($data) {
+$username = $data['email'];
+$password = $data['password'];
 
 $sql = "SELECT * FROM user WHERE email = '$username' AND password = '$password'";
 $result = $conn->query($sql);
