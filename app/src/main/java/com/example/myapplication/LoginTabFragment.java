@@ -46,7 +46,7 @@ public class LoginTabFragment extends Fragment {
     String messageForEmailValidation, messageForPasswordValidation;
     EditText emailLoginFragment, passwordLoginFragment;
     Button loginBtnLoginFragment;
-    TextView forgetPasswordLoginFragment;
+    TextView forgetPasswordLoginFragment, rigister;
     AlertDialog.Builder reset_alert;
 
     @Override
@@ -58,6 +58,7 @@ public class LoginTabFragment extends Fragment {
         passwordLoginFragment = root.findViewById(R.id.password);
         loginBtnLoginFragment = root.findViewById(R.id.loginBtn);
         forgetPasswordLoginFragment = root.findViewById(R.id.forgetPassword);
+        rigister = root.findViewById(R.id.rigisternow);
 
         //initialize the AlertDialog
         reset_alert = new AlertDialog.Builder(root.getContext());
@@ -89,6 +90,13 @@ public class LoginTabFragment extends Fragment {
                         }).setNegativeButton("Cansel",null)
                         .setView(for_reset_password)
                         .create().show();
+            }
+        });
+
+        rigister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),Rigister.class));
             }
         });
 
