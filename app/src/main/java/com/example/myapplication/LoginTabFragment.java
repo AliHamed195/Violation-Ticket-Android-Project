@@ -153,7 +153,7 @@ public class LoginTabFragment extends Fragment {
 
 
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.0.111:8080/pro/")
+                        .baseUrl("http://localhost:8080/pro/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
